@@ -3,12 +3,17 @@ from models import db, Attendance, Student
 from datetime import datetime
 import pandas as pd
 from fpdf import FPDF
-import io, secrets
+from flask_sqlalchemy import SQLAlchemy
+import io, secrets, os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///attendance.db'
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('postgresql://attendance_8pam_user:mcisPpNDtEUXkLJMVoY4PSM97vaHCZRB@dpg-cui5sgogph6c73egt4u0-a.singapore-postgres.render.com/attendance_8pam')  
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db.init_app(app)
+
+db = SQLAlchemy(app)
+
 
 @app.route('/')
 def home():
