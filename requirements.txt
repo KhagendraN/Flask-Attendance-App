@@ -4,3 +4,4 @@ pandas
 fpdf
 gunicorn
 flask-migrate
+psycopg2-binary 
