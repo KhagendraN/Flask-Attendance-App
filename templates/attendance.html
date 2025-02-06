@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance for {{ subject }} by {{ teacher }} on {{ date }}</h1>
+        <form method="POST">
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Roll Number</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.roll_number }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>
+                                <!-- Add radio buttons for attendance -->
+                                <input type="radio" name="attendance_{{ student.roll_number }}" value="P"> Present
+                                <input type="radio" name="attendance_{{ student.roll_number }}" value="A"> Absent
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn">Confirm Attendance</button>
+        </form>
+    </div>
+</body>
+</html>

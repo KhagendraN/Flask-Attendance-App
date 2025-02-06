@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Attendance Sheet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Download Attendance Sheet</h1>
+        <form action="{{ url_for('generate_report') }}" method="POST">
+            
+            <!-- Subject Selection -->
+            <label for="subject">Subject:</label>
+            <select name="subject" required>
+                <option value="" disabled selected>Select Subject</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="FEEE">FEEE</option>
+                <option value="C Programming">C Programming</option>
+            </select><br>
+
+            <!-- Teacher Selection -->
+            <label for="teacher">Teacher:</label>
+            <select name="teacher" required>
+                <option value="" disabled selected>Select Teacher</option>
+                <option value="BRT">BRT</option>
+                <option value="UKJ">UKJ</option>
+                <option value="PA">PA</option>
+                <option value="HPG">HPG</option>
+            </select><br>
+
+            <!-- Start & End Date Selection -->
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" required><br>
+
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" required><br>
+
+            <!-- Download Format Selection -->
+            <label for="format">Download as:</label>
+            <select name="format">
+                <option value="excel">Excel</option>
+                <option value="pdf">PDF</option>
+            </select><br>
+
+            <button type="submit" class="btn">Download</button>
+        </form>
+    </div>
+</body>
+</html>

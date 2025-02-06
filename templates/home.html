@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Attendance System</h1>
+        <form action="{{ url_for('take_attendance') }}" method="POST" class="form">
+            <label for="subject">Select Subject:</label>
+            <select name="subject" id="subject">
+                {% for subject in subjects %}
+                    <option value="{{ subject }}">{{ subject }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="teacher">Select Teacher:</label>
+            <select name="teacher" id="teacher">
+                {% for teacher in teachers %}
+                    <option value="{{ teacher }}">{{ teacher }}</option>
+                {% endfor %}
+            </select><br>
+
+            <button type="submit" class="btn">Take Attendance</button>
+        </form>
+
+        <a href="{{ url_for('download') }}" class="btn">Download Attendance Sheet</a>
+    </div>
+</body>
+</html>
