@@ -5,15 +5,16 @@ import pandas as pd
 from fpdf import FPDF
 from flask_sqlalchemy import SQLAlchemy
 import io, secrets, os
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('postgresql://attendance_8pam_user:mcisPpNDtEUXkLJMVoY4PSM97vaHCZRB@dpg-cui5sgogph6c73egt4u0-a.singapore-postgres.render.com/attendance_8pam')  
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')   
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+migrate = Migrate(app, db)
 
 @app.route('/')
 def home():
