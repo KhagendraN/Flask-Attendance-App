@@ -49,7 +49,7 @@ The Attendance Management System is a web application designed to streamline the
 ### Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/attendance-management-system.git
+   https://github.com/KhagendraN/Flask-Attendance-App.git
    cd attendance-management-system
    ```
 
